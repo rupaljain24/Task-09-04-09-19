@@ -108,7 +108,7 @@ public class MainEmployee {
 				String em = sc.next();
 				PreparedStatement st1 = con.prepareStatement("delete from employee where Empno=" + em);
 				st1.executeUpdate();
-				System.out.println("Data of Employee "+em +"deleted.!");
+				System.out.println("Data of Employee " + em + "deleted.!");
 				break;
 
 			case 4:
@@ -121,7 +121,7 @@ public class MainEmployee {
 				System.out.print("Enter Employee number whose salary you want to update :");
 				int no = sc.nextInt();
 				System.out.println("Enter new salary :");
-				int NewSalary=sc.nextInt();
+				int NewSalary = sc.nextInt();
 				PreparedStatement st3 = con.prepareStatement("update employee set salary=? where empno=?");
 				st3.setInt(1, NewSalary);
 				st3.setInt(2, no);
@@ -143,14 +143,13 @@ public class MainEmployee {
 				int id1 = sc.nextInt();
 
 				CallableStatement stmt2 = con.prepareCall("{?=call return_sal(?)}");
-				stmt2.registerOutParameter(1,Types.INTEGER);
-				stmt2.setInt(2,id1);
-				
+				stmt2.registerOutParameter(1, Types.INTEGER);
+				stmt2.setInt(2, id1);
+
 				stmt2.execute();
-				System.out.println("Salary displayed="+stmt2.getInt(1));
-				
+				System.out.println("Salary displayed=" + stmt2.getInt(1));
+
 				break;
-				
 
 			}
 		}
